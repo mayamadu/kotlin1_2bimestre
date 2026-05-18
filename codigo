@@ -1,0 +1,32 @@
+data class Pedido(
+    val id: Int,
+    val status: String
+)
+
+class PedidoService {
+
+    fun processar(pedido: Pedido) {
+
+        if (pedido.status == "novo") {
+            processarNovoPedido(pedido)
+
+        } else if (pedido.status == "processado") {
+            mostrarPedidoProcessado(pedido)
+
+        } else {
+            mostrarErro(pedido)
+        }
+    }
+
+    private fun processarNovoPedido(pedido: Pedido) {
+        println("Processando pedido ${pedido.id}")
+    }
+
+    private fun mostrarPedidoProcessado(pedido: Pedido) {
+        println("Pedido ${pedido.id} já foi processado")
+    }
+
+    private fun mostrarErro(pedido: Pedido) {
+        println("Status inválido para o pedido ${pedido.id}")
+    }
+}
